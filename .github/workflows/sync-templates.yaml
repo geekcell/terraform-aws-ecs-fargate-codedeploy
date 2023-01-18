@@ -1,0 +1,82 @@
+---
+#########################
+## Sync template files ##
+#########################
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+name: Sync templates
+on:
+  workflow_dispatch:
+
+##########################
+# Prevent duplicate jobs #
+##########################
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+###############
+# Run the job #
+###############
+jobs:
+  ###############
+  # Sync labels #
+  ###############
+  sync-labels:
+    name: Sync labels
+    runs-on: ubuntu-latest
+    steps:
+      ##################################
+      # Sync labels with template Repo #
+      ##################################
+      - name: Sync labels
+        uses: EndBug/label-sync@v2.3.1
+        with:
+          config-file: https://raw.githubusercontent.com/geekcell/template-terraform-module/main/.github/labels.yaml
+
+  #######################
+  # Sync template files #
+  #######################
+  sync-template-files:
+    name: Sync template files
+    runs-on: ubuntu-latest
+    steps:
+      ############################
+      # Checkout the source code #
+      ############################
+      - name: Checkout Code
+        uses: actions/checkout@v3.1.0
+        with:
+          token: ${{ secrets.GEEKCELL_PAT_WORKFLOWS }}
+
+      ########################
+      # Patch template files #
+      ########################
+      - name: Force patching of template files
+        run: |
+          yes y | make setup/update-template
+
+      ####################
+      # Update README.md #
+      ####################
+      - name: Terraform docs
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          config-file: .terraform-docs.yml
+          git-push: false
+
+      #############
+      # Create PR #
+      #############
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v4.2.0
+        with:
+          token: ${{ secrets.GEEKCELL_PAT_WORKFLOWS }}
+          title: Updated template files
+          commit-message: Update template files from main repo
+          branch: update-template-files
+          delete-branch: true

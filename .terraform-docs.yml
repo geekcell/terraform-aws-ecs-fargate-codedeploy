@@ -1,0 +1,37 @@
+formatter: "md table"
+header-from: main.tf
+
+content: |-
+  {{ include "docs/logo.md" }}
+
+  {{ include "docs/badges.md" }}
+
+  {{ .Header }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
+  {{ .Providers }}
+
+  ## Resources
+  {{ range .Module.Resources }}
+  - {{ .GetMode }}.{{ .Spec }} ({{ .Position.Filename }}#{{ .Position.Line }})
+  {{- end }}
+
+  # Examples
+    ### Full
+    ```hcl
+    {{ include "examples/basic-example/main.tf" }}
+    ```
+
+output:
+  file: "README.md"
+  mode: inject
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
+
+settings:
+  lockfile: false

@@ -1,0 +1,73 @@
+---
+#####################
+## Run Semantic PR ##
+#####################
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+name: Semantic PR
+on:
+  pull_request:
+    types: [ opened, edited, synchronize ]
+
+##########################
+# Prevent duplicate jobs #
+##########################
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+###############
+# Run the job #
+###############
+jobs:
+  ###############
+  # Semantic PR #
+  ###############
+  semantic-pr:
+    name: Validate PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      ############
+      # Check PR #
+      ############
+      - name: Check PR
+        id: lint-pr-title
+        uses: amannn/action-semantic-pull-request@v5.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      #############################
+      # Add PR comment with error #
+      #############################
+      - name: Add PR error comment
+        uses: marocchino/sticky-pull-request-comment@v2.3.0
+        if: always() && (steps.lint-pr-title.outputs.error_message != null)
+        with:
+          header: pr-title-lint-error
+          message: |
+            We require pull request titles to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your proposed title needs to be adjusted.
+
+            Details:
+
+            ```
+            ${{ steps.lint-pr-title.outputs.error_message }}
+            ```
+
+      ################################
+      # Delete PR comment with error #
+      ################################
+      - name: Delete PR error comment
+        uses: marocchino/sticky-pull-request-comment@v2.3.0
+        if: ${{ steps.lint_pr_title.outputs.error_message == null }}
+        with:
+          header: pr-title-lint-error
+          delete: true
