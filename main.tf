@@ -249,8 +249,8 @@ resource "aws_codedeploy_deployment_group" "main" {
   }
 
   alarm_configuration {
-    enabled = length(var.codedeploy_cloudwatch_alarms) > 0 ? true : false
-    alarms = var.codedeploy_cloudwatch_alarms
+    enabled = length(var.codedeploy_cloudwatch_alarm_names) > 0 ? true : false
+    alarms = var.codedeploy_cloudwatch_alarm_names
   }
 
   load_balancer_info {
