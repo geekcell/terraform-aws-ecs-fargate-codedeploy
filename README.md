@@ -47,14 +47,15 @@ Terraform module for creating an AWS ECS Fargate service with CodeDeploy B/G dep
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_assign_public_ip"></a> [assign\_public\_ip](#input\_assign\_public\_ip) | Assign a public IP address to the ENI. | `bool` | `false` | no |
+| <a name="input_cloudwatch_log_group_name"></a> [cloudwatch\_log\_group\_name](#input\_cloudwatch\_log\_group\_name) | The name of the CloudWatch log group. | `string` | `null` | no |
 | <a name="input_codedeploy_auto_rollback_events"></a> [codedeploy\_auto\_rollback\_events](#input\_codedeploy\_auto\_rollback\_events) | The event type or types that trigger a rollback. If none are defined `auto_rollback` will be disabled. | `list(string)` | <pre>[<br>  "DEPLOYMENT_FAILURE",<br>  "DEPLOYMENT_STOP_ON_ALARM"<br>]</pre> | no |
+| <a name="input_codedeploy_cloudwatch_alarms"></a> [codedeploy\_cloudwatch\_alarms](#input\_codedeploy\_cloudwatch\_alarms) | Cloudwatch alarm ARNs to add to the deployment group. Allows automated rollback on errors, for example. | `list(string)` | `[]` | no |
 | <a name="input_codedeploy_deployment_config_name"></a> [codedeploy\_deployment\_config\_name](#input\_codedeploy\_deployment\_config\_name) | The name of the group's deployment config. | `string` | `"CodeDeployDefault.ECSAllAtOnce"` | no |
 | <a name="input_codedeploy_deployment_ready_wait_time_in_minutes"></a> [codedeploy\_deployment\_ready\_wait\_time\_in\_minutes](#input\_codedeploy\_deployment\_ready\_wait\_time\_in\_minutes) | The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. If set to 0 the deployment will continue without waiting for approval. | `number` | `0` | no |
 | <a name="input_codedeploy_role_name"></a> [codedeploy\_role\_name](#input\_codedeploy\_role\_name) | The name of the role that allows CodeDeploy to make calls to ECS, Auto Scaling, and CloudWatch on your behalf. | `string` | `null` | no |
 | <a name="input_codedeploy_role_name_prefix"></a> [codedeploy\_role\_name\_prefix](#input\_codedeploy\_role\_name\_prefix) | Whether to prefix the CodeDeploy role name. | `bool` | `false` | no |
 | <a name="input_codedeploy_termination_action"></a> [codedeploy\_termination\_action](#input\_codedeploy\_termination\_action) | The action to take on instances in the original environment after a successful blue/green deployment. | `string` | `"TERMINATE"` | no |
 | <a name="input_codedeploy_termination_wait_time_in_minutes"></a> [codedeploy\_termination\_wait\_time\_in\_minutes](#input\_codedeploy\_termination\_wait\_time\_in\_minutes) | The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment. | `number` | `0` | no |
-| <a name="input_codedeploy_cloudwatch_alarms"></a> [codedeploy\_cloudwatch\_alarms](#input\_codedeploy\_cloudwatch\_alarms) | Cloudwatch alarm ARNs to add to deployment group. | `list(string)` | `[]` | no |
 | <a name="input_create_cloudwatch_log_group"></a> [create\_cloudwatch\_log\_group](#input\_create\_cloudwatch\_log\_group) | Whether to create a CloudWatch log group for the service. | `bool` | `true` | no |
 | <a name="input_deployment_maximum_percent"></a> [deployment\_maximum\_percent](#input\_deployment\_maximum\_percent) | Upper limit (as a percentage of the service's `desired_count`) of the number of running tasks that can be running in a service during a deployment. | `number` | `200` | no |
 | <a name="input_deployment_minimum_healthy_percent"></a> [deployment\_minimum\_healthy\_percent](#input\_deployment\_minimum\_healthy\_percent) | Lower limit (as a percentage of the service's `desired_count`) of the number of running tasks that must remain running and healthy in a service during a deployment. | `number` | `100` | no |
@@ -135,7 +136,7 @@ Terraform module for creating an AWS ECS Fargate service with CodeDeploy B/G dep
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (main.tf#277)
+- resource.aws_cloudwatch_log_group.main (main.tf#282)
 - resource.aws_codedeploy_app.main (main.tf#211)
 - resource.aws_codedeploy_deployment_group.main (main.tf#218)
 - resource.aws_ecs_service.main (main.tf#44)
