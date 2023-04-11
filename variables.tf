@@ -279,8 +279,8 @@ variable "codedeploy_role_name_prefix" {
 }
 
 # CLOUDWATCH
-variable "codedeploy_cloudwatch_alarms" {
-  description = "Cloudwatch alarm ARNs to add to the deployment group. Allows automated rollback on errors, for example."
+variable "codedeploy_cloudwatch_alarm_names" {
+  description = "Cloudwatch alarm NAMES (not ARNs) to add to the deployment group. Allows automated rollback on errors."
   default     = []
   type        = list(string)
 }
