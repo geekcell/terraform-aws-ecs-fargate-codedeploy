@@ -248,6 +248,11 @@ resource "aws_codedeploy_deployment_group" "main" {
     events  = var.codedeploy_auto_rollback_events
   }
 
+  alarm_configuration {
+    enabled = length(var.codedeploy_cloudwatch_alarms) > 0 ? true : false
+    alarms = var.codedeploy_cloudwatch_alarms
+  }
+
   load_balancer_info {
     target_group_pair_info {
       #TODO: test listener

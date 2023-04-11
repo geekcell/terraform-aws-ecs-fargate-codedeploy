@@ -278,6 +278,14 @@ variable "codedeploy_role_name_prefix" {
   type        = bool
 }
 
+# CLOUDWATCH
+variable "codedeploy_cloudwatch_alarms" {
+  description = "Cloudwatch alarm ARNs to add to the deployment group. Allows automated rollback on errors, for example."
+  default     = []
+  type        = list(string)
+}
+
+
 # TARGET GROUP
 variable "target_group_load_balancing_algorithm_type" {
   description = "Determines how the load balancer selects targets when routing requests."
