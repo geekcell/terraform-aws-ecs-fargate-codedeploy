@@ -402,11 +402,6 @@ variable "target_group_health_check_port" {
   description = "Port to use to connect with the target."
   default     = "traffic-port"
   type        = any
-
-  validation {
-    condition     = can(tostring(var.target_group_health_check_port)) && var.target_group_health_check_port == "traffic-port"
-    error_message = "Value must be `traffic-port` or a number between 1 and 65535."
-  }
 }
 
 variable "target_group_health_check_protocol" {
