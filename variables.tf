@@ -73,7 +73,7 @@ variable "task_ephemeral_storage_size_in_gib" {
 variable "task_volumes" {
   description = "A list of volume definitions."
   default     = []
-  type        = list(object({
+  type = list(object({
     name      = string
     host_path = string
 
@@ -102,7 +102,7 @@ variable "task_volumes" {
 variable "task_inference_accelerators" {
   description = "List of Elastic Inference accelerators associated with the task."
   default     = []
-  type        = list(object({
+  type = list(object({
     name = string
     type = string
   }))
@@ -111,7 +111,7 @@ variable "task_inference_accelerators" {
 variable "task_proxy_configuration" {
   description = "Configuration details for an App Mesh proxy."
   default     = null
-  type        = object({
+  type = object({
     container_name = string
     properties     = map(any)
     type           = optional(string, "APPMESH")
@@ -208,7 +208,7 @@ variable "enable_ecs_managed_tags" {
 variable "service_registries" {
   description = "Service discovery registries for the service."
   default     = []
-  type        = list(object({
+  type = list(object({
     registry_arn   = string
     port           = number
     container_name = optional(string)
@@ -402,11 +402,6 @@ variable "target_group_health_check_port" {
   description = "Port to use to connect with the target."
   default     = "traffic-port"
   type        = any
-
-  validation {
-    condition     = can(tostring(var.target_group_health_check_port)) && var.target_group_health_check_port == "traffic-port"
-    error_message = "Value must be `traffic-port` or a number between 1 and 65535."
-  }
 }
 
 variable "target_group_health_check_protocol" {
