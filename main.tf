@@ -1,7 +1,17 @@
 /**
- * # Terraform AWS ECS Fargate CodeDeploy Module
+ * # Terraform AWS ECS Fargate CodeDeploy
  *
- * Terraform module for creating an AWS ECS Fargate service with CodeDeploy B/G deployment.
+ * This Terraform module offers a streamlined solution for deploying and managing AWS Elastic Container Service (ECS)
+ * on AWS Fargate in your AWS account. AWS Fargate is a serverless compute engine designed for running containers,
+ * enabling you to focus on your applications without worrying about managing the underlying infrastructure. By
+ * utilizing this Terraform module, you can effectively set up and manage your containerized applications, ensuring
+ * they are highly available and can scale to accommodate increased traffic.
+ *
+ * Our team possesses in-depth knowledge of AWS container services and has fine-tuned this module to deliver the best
+ * possible experience for users. The module encompasses all essential configurations, making it simple to use and
+ * integrate into your existing AWS ecosystem. Whether you are just beginning your journey with containerized
+ * applications or seeking a more efficient approach to manage your workloads, this Terraform module offers a
+ * preconfigured solution for seamless scalability and high availability."
  */
 
 locals {
@@ -157,9 +167,11 @@ resource "aws_lb_target_group" "main" {
 }
 
 #
-# LB Listener
+# AWS Application Load Balancer Listener
 #
 resource "aws_lb_listener" "main" {
+  count = var.lb_listener == [] ? 1 : 0
+
   load_balancer_arn = var.lb_arn
   port              = var.lb_listener_port
   protocol          = var.lb_listener_protocol
@@ -177,6 +189,8 @@ resource "aws_lb_listener" "main" {
     # This changes on every deployment and will lead to downtime if changed to the wrong TG by TF
     ignore_changes = [default_action]
   }
+
+  tags = var.tags
 
   depends_on = [aws_lb_target_group.main]
 }
@@ -258,7 +272,7 @@ resource "aws_codedeploy_deployment_group" "main" {
       #TODO: test listener
       prod_traffic_route {
         # Why is this an array? https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_TrafficRoute.html
-        listener_arns = [aws_lb_listener.main.arn]
+        listener_arns = var.lb_listener == [] ? [aws_lb_listener.main[0].arn] : var.lb_listener
       }
 
       target_group {

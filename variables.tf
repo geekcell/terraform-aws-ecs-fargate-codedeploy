@@ -416,6 +416,12 @@ variable "lb_arn" {
   type        = string
 }
 
+variable "lb_listener" {
+  description = "The listener to attach to the service."
+  default     = []
+  type        = list(string)
+}
+
 variable "lb_listener_port" {
   description = "The port on the load balancer listener."
   default     = 80

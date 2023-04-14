@@ -38,9 +38,19 @@ Comment in these badges if they apply to the repository.
 
 -->
 
-# Terraform AWS ECS Fargate CodeDeploy Module
+# Terraform AWS ECS Fargate CodeDeploy
 
-Terraform module for creating an AWS ECS Fargate service with CodeDeploy B/G deployment.
+This Terraform module offers a streamlined solution for deploying and managing AWS Elastic Container Service (ECS)
+on AWS Fargate in your AWS account. AWS Fargate is a serverless compute engine designed for running containers,
+enabling you to focus on your applications without worrying about managing the underlying infrastructure. By
+utilizing this Terraform module, you can effectively set up and manage your containerized applications, ensuring
+they are highly available and can scale to accommodate increased traffic.
+
+Our team possesses in-depth knowledge of AWS container services and has fine-tuned this module to deliver the best
+possible experience for users. The module encompasses all essential configurations, making it simple to use and
+integrate into your existing AWS ecosystem. Whether you are just beginning your journey with containerized
+applications or seeking a more efficient approach to manage your workloads, this Terraform module offers a
+preconfigured solution for seamless scalability and high availability."
 
 ## Inputs
 
@@ -66,6 +76,7 @@ Terraform module for creating an AWS ECS Fargate service with CodeDeploy B/G dep
 | <a name="input_enable_lb_test_listener"></a> [enable\_lb\_test\_listener](#input\_enable\_lb\_test\_listener) | Enable a test listener on the load balancer. This is useful for testing the deployment process. | `bool` | `false` | no |
 | <a name="input_health_check_grace_period_seconds"></a> [health\_check\_grace\_period\_seconds](#input\_health\_check\_grace\_period\_seconds) | Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown. | `number` | `0` | no |
 | <a name="input_lb_arn"></a> [lb\_arn](#input\_lb\_arn) | The ARN of the load balancer to attach to the service. | `string` | n/a | yes |
+| <a name="input_lb_listener"></a> [lb\_listener](#input\_lb\_listener) | The listener to attach to the service. | `list(string)` | `[]` | no |
 | <a name="input_lb_listener_alpn_policy"></a> [lb\_listener\_alpn\_policy](#input\_lb\_listener\_alpn\_policy) | The ALPN policy to use for HTTPS listener. | `string` | `null` | no |
 | <a name="input_lb_listener_certificate_arn"></a> [lb\_listener\_certificate\_arn](#input\_lb\_listener\_certificate\_arn) | The ARN of the certificate to use for HTTPS listener. | `string` | `null` | no |
 | <a name="input_lb_listener_port"></a> [lb\_listener\_port](#input\_lb\_listener\_port) | The port on the load balancer listener. | `number` | `80` | no |
@@ -121,6 +132,7 @@ Terraform module for creating an AWS ECS Fargate service with CodeDeploy B/G dep
 | <a name="output_codedeploy_app_name"></a> [codedeploy\_app\_name](#output\_codedeploy\_app\_name) | # CODEDEPLOY |
 | <a name="output_codedeploy_deployment_group_name"></a> [codedeploy\_deployment\_group\_name](#output\_codedeploy\_deployment\_group\_name) | n/a |
 | <a name="output_service_name"></a> [service\_name](#output\_service\_name) | # ECS |
+| <a name="output_target_group_arn"></a> [target\_group\_arn](#output\_target\_group\_arn) | # TARGET GROUPS |
 | <a name="output_task_definition_arn"></a> [task\_definition\_arn](#output\_task\_definition\_arn) | # TASK DEFINITION |
 | <a name="output_task_definition_execution_role_arn"></a> [task\_definition\_execution\_role\_arn](#output\_task\_definition\_execution\_role\_arn) | n/a |
 | <a name="output_task_definition_execution_role_name"></a> [task\_definition\_execution\_role\_name](#output\_task\_definition\_execution\_role\_name) | n/a |
@@ -136,13 +148,13 @@ Terraform module for creating an AWS ECS Fargate service with CodeDeploy B/G dep
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (main.tf#282)
-- resource.aws_codedeploy_app.main (main.tf#211)
-- resource.aws_codedeploy_deployment_group.main (main.tf#218)
-- resource.aws_ecs_service.main (main.tf#44)
-- resource.aws_lb_listener.main (main.tf#162)
-- resource.aws_lb_listener.test_listener (main.tf#184)
-- resource.aws_lb_target_group.main (main.tf#121)
-- resource.random_id.target_group (main.tf#110)
+- resource.aws_cloudwatch_log_group.main (main.tf#296)
+- resource.aws_codedeploy_app.main (main.tf#225)
+- resource.aws_codedeploy_deployment_group.main (main.tf#232)
+- resource.aws_ecs_service.main (main.tf#54)
+- resource.aws_lb_listener.main (main.tf#172)
+- resource.aws_lb_listener.test_listener (main.tf#198)
+- resource.aws_lb_target_group.main (main.tf#131)
+- resource.random_id.target_group (main.tf#120)
 - data source.aws_subnet.main (data.tf#1)
 <!-- END_TF_DOCS -->
