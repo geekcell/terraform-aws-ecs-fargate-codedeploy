@@ -417,9 +417,9 @@ variable "lb_arn" {
 }
 
 variable "lb_listener" {
-  description = "The listener to attach to the service."
-  default     = []
-  type        = list(string)
+  description = "Use an existing LB listener to attach to the service. If used, the other lb_* arguments are ignored."
+  default     = null
+  type        = string
 }
 
 variable "lb_listener_port" {

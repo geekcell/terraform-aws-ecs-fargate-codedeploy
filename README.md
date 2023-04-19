@@ -76,7 +76,7 @@ preconfigured solution for seamless scalability and high availability."
 | <a name="input_enable_lb_test_listener"></a> [enable\_lb\_test\_listener](#input\_enable\_lb\_test\_listener) | Enable a test listener on the load balancer. This is useful for testing the deployment process. | `bool` | `false` | no |
 | <a name="input_health_check_grace_period_seconds"></a> [health\_check\_grace\_period\_seconds](#input\_health\_check\_grace\_period\_seconds) | Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown. | `number` | `0` | no |
 | <a name="input_lb_arn"></a> [lb\_arn](#input\_lb\_arn) | The ARN of the load balancer to attach to the service. | `string` | n/a | yes |
-| <a name="input_lb_listener"></a> [lb\_listener](#input\_lb\_listener) | The listener to attach to the service. | `list(string)` | `[]` | no |
+| <a name="input_lb_listener"></a> [lb\_listener](#input\_lb\_listener) | Use an existing LB listener to attach to the service. If used, the other lb\_* arguments are ignored. | `string` | `null` | no |
 | <a name="input_lb_listener_alpn_policy"></a> [lb\_listener\_alpn\_policy](#input\_lb\_listener\_alpn\_policy) | The ALPN policy to use for HTTPS listener. | `string` | `null` | no |
 | <a name="input_lb_listener_certificate_arn"></a> [lb\_listener\_certificate\_arn](#input\_lb\_listener\_certificate\_arn) | The ARN of the certificate to use for HTTPS listener. | `string` | `null` | no |
 | <a name="input_lb_listener_port"></a> [lb\_listener\_port](#input\_lb\_listener\_port) | The port on the load balancer listener. | `number` | `80` | no |

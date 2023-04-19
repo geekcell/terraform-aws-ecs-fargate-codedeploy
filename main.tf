@@ -170,7 +170,7 @@ resource "aws_lb_target_group" "main" {
 # AWS Application Load Balancer Listener
 #
 resource "aws_lb_listener" "main" {
-  count = var.lb_listener == [] ? 1 : 0
+  count = var.lb_listener == null ? 1 : 0
 
   load_balancer_arn = var.lb_arn
   port              = var.lb_listener_port
@@ -202,8 +202,8 @@ resource "aws_lb_listener" "test_listener" {
   port              = var.lb_test_listener_port
   protocol          = var.lb_test_listener_protocol
 
-  ssl_policy      = var.lb_test_listener_protocol == "HTTPS" ? var.lb_listener_ssl_policy : null
-  alpn_policy     = var.lb_test_listener_protocol == "HTTPS" ? var.lb_listener_alpn_policy : null
+  ssl_policy      = var.lb_test_listener_protocol == "HTTPS" ? var.lb_test_listener_ssl_policy : null
+  alpn_policy     = var.lb_test_listener_protocol == "HTTPS" ? var.lb_test_listener_alpn_policy : null
   certificate_arn = var.lb_test_listener_certificate_arn
 
   default_action {
@@ -272,7 +272,7 @@ resource "aws_codedeploy_deployment_group" "main" {
       #TODO: test listener
       prod_traffic_route {
         # Why is this an array? https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_TrafficRoute.html
-        listener_arns = var.lb_listener == [] ? [aws_lb_listener.main[0].arn] : var.lb_listener
+        listener_arns = [coalesce(var.lb_listener, aws_lb_listener.main[0].arn)]
       }
 
       target_group {
@@ -285,7 +285,7 @@ resource "aws_codedeploy_deployment_group" "main" {
     }
   }
 
-  depends_on = [aws_lb_listener.main, aws_lb_target_group.main]
+  depends_on = [aws_lb_target_group.main]
 
   tags = var.tags
 }
