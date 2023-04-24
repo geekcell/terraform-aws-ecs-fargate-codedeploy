@@ -129,11 +129,12 @@ preconfigured solution for seamless scalability and high availability."
 
 | Name | Description |
 |------|-------------|
+| <a name="output_blue_target_group_arn"></a> [blue\_target\_group\_arn](#output\_blue\_target\_group\_arn) | # TARGET GROUPS |
 | <a name="output_cloudwatch_log_group_arn"></a> [cloudwatch\_log\_group\_arn](#output\_cloudwatch\_log\_group\_arn) | # CLOUDWATCH |
 | <a name="output_codedeploy_app_name"></a> [codedeploy\_app\_name](#output\_codedeploy\_app\_name) | # CODEDEPLOY |
 | <a name="output_codedeploy_deployment_group_name"></a> [codedeploy\_deployment\_group\_name](#output\_codedeploy\_deployment\_group\_name) | n/a |
+| <a name="output_green_target_group_arn"></a> [green\_target\_group\_arn](#output\_green\_target\_group\_arn) | n/a |
 | <a name="output_service_name"></a> [service\_name](#output\_service\_name) | # ECS |
-| <a name="output_target_group_arn"></a> [target\_group\_arn](#output\_target\_group\_arn) | # TARGET GROUPS |
 | <a name="output_task_definition_arn"></a> [task\_definition\_arn](#output\_task\_definition\_arn) | # TASK DEFINITION |
 | <a name="output_task_definition_execution_role_arn"></a> [task\_definition\_execution\_role\_arn](#output\_task\_definition\_execution\_role\_arn) | n/a |
 | <a name="output_task_definition_execution_role_name"></a> [task\_definition\_execution\_role\_name](#output\_task\_definition\_execution\_role\_name) | n/a |
