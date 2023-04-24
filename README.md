@@ -82,6 +82,7 @@ preconfigured solution for seamless scalability and high availability."
 | <a name="input_lb_listener_port"></a> [lb\_listener\_port](#input\_lb\_listener\_port) | The port on the load balancer listener. | `number` | `80` | no |
 | <a name="input_lb_listener_protocol"></a> [lb\_listener\_protocol](#input\_lb\_listener\_protocol) | The protocol on the load balancer listener. | `string` | `"HTTP"` | no |
 | <a name="input_lb_listener_ssl_policy"></a> [lb\_listener\_ssl\_policy](#input\_lb\_listener\_ssl\_policy) | The SSL policy to use for HTTPS listener. | `string` | `"ELBSecurityPolicy-2016-08"` | no |
+| <a name="input_lb_test_listener"></a> [lb\_test\_listener](#input\_lb\_test\_listener) | Use an existing LB test listener to attach to the service. If used, the other lb\_test\_* arguments are ignored. | `string` | `null` | no |
 | <a name="input_lb_test_listener_alpn_policy"></a> [lb\_test\_listener\_alpn\_policy](#input\_lb\_test\_listener\_alpn\_policy) | The ALPN policy to use for the test HTTPS listener. | `string` | `"HTTP2Preferred"` | no |
 | <a name="input_lb_test_listener_certificate_arn"></a> [lb\_test\_listener\_certificate\_arn](#input\_lb\_test\_listener\_certificate\_arn) | The ARN of the certificate to use for the test HTTPS listener. | `string` | `null` | no |
 | <a name="input_lb_test_listener_port"></a> [lb\_test\_listener\_port](#input\_lb\_test\_listener\_port) | The port on the load balancer test listener. | `number` | `80` | no |
@@ -148,7 +149,7 @@ preconfigured solution for seamless scalability and high availability."
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (main.tf#296)
+- resource.aws_cloudwatch_log_group.main (main.tf#303)
 - resource.aws_codedeploy_app.main (main.tf#225)
 - resource.aws_codedeploy_deployment_group.main (main.tf#232)
 - resource.aws_ecs_service.main (main.tf#54)

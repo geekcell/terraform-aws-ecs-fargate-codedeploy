@@ -196,7 +196,7 @@ resource "aws_lb_listener" "main" {
 }
 
 resource "aws_lb_listener" "test_listener" {
-  count = var.enable_lb_test_listener ? 1 : 0
+  count = var.enable_lb_test_listener && var.lb_test_listener == null ? 1 : 0
 
   load_balancer_arn = var.lb_arn
   port              = var.lb_test_listener_port
@@ -269,10 +269,17 @@ resource "aws_codedeploy_deployment_group" "main" {
 
   load_balancer_info {
     target_group_pair_info {
-      #TODO: test listener
+      # The listeners are arrays with a max size of 1: https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_TrafficRoute.html
       prod_traffic_route {
-        # Why is this an array? https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_TrafficRoute.html
-        listener_arns = [coalesce(var.lb_listener, aws_lb_listener.main[0].arn)]
+        listener_arns = [try(var.lb_listener, aws_lb_listener.main[0].arn)]
+      }
+
+      dynamic "test_traffic_route" {
+        for_each = var.enable_lb_test_listener || var.lb_test_listener != null ? [1] : []
+
+        content {
+          listener_arns = [try(var.lb_test_listener, aws_lb_listener.test_listener[0].arn)]
+        }
       }
 
       target_group {

@@ -458,6 +458,12 @@ variable "enable_lb_test_listener" {
   type        = bool
 }
 
+variable "lb_test_listener" {
+  description = "Use an existing LB test listener to attach to the service. If used, the other lb_test_* arguments are ignored."
+  default     = null
+  type        = string
+}
+
 variable "lb_test_listener_port" {
   description = "The port on the load balancer test listener."
   default     = 80
