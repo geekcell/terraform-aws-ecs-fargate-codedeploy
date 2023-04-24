@@ -13,8 +13,12 @@ output "service_name" {
 }
 
 ## TARGET GROUPS
-output "target_group_arn" {
+output "blue_target_group_arn" {
   value = aws_lb_target_group.main["blue"].arn
+}
+
+output "green_target_group_arn" {
+  value = aws_lb_target_group.main["green"].arn
 }
 
 ## TASK DEFINITION
