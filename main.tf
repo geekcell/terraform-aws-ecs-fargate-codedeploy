@@ -203,7 +203,7 @@ resource "aws_lb_listener" "test_listener" {
   protocol          = var.lb_test_listener_protocol
 
   ssl_policy      = var.lb_test_listener_protocol == "HTTPS" ? var.lb_test_listener_ssl_policy : null
-  alpn_policy     = var.lb_test_listener_protocol == "HTTPS" ? var.lb_test_listener_alpn_policy : null
+  alpn_policy     = var.lb_test_listener_alpn_policy
   certificate_arn = var.lb_test_listener_certificate_arn
 
   default_action {

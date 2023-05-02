@@ -484,7 +484,7 @@ variable "lb_test_listener_ssl_policy" {
 
 variable "lb_test_listener_alpn_policy" {
   description = "The ALPN policy to use for the test HTTPS listener."
-  default     = "HTTP2Preferred"
+  default     = null
   type        = string
 }
 
