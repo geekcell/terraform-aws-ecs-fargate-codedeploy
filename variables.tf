@@ -478,7 +478,7 @@ variable "lb_test_listener_protocol" {
 
 variable "lb_test_listener_ssl_policy" {
   description = "The SSL policy to use for the test HTTPS listener."
-  default     = "ELBSecurityPolicy-2016-08"
+  default     = "ELBSecurityPolicy-TLS13-1-2-2021-06"
   type        = string
 }
 
