@@ -1,0 +1,122 @@
+---
+################
+## Run linter ##
+################
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+name: Lint
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+##########################
+# Prevent duplicate jobs #
+##########################
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+###############
+# Run the job #
+###############
+jobs:
+  ##########
+  # TF fmt #
+  ##########
+  tf-fmt:
+    name: FMT
+    runs-on: ubuntu-latest
+    steps:
+      ############################
+      # Checkout the source code #
+      ############################
+      - name: Checkout Code
+        uses: actions/checkout@v3.1.0
+
+      #####################
+      # Run Terraform fmt #
+      #####################
+      - name: Terraform fmt
+        uses: dflook/terraform-fmt-check@v1.29.1
+
+  ##########
+  # TFLint #
+  ##########
+  tf-lint:
+    name: TFLint
+    runs-on: ubuntu-latest
+    steps:
+      ############################
+      # Checkout the source code #
+      ############################
+      - name: Checkout Code
+        uses: actions/checkout@v3.1.0
+
+      #################
+      # Cache plugins #
+      #################
+      - name: Cache plugin dir
+        uses: actions/cache@v3.0.11
+        with:
+          path: ~/.tflint.d/plugins
+          key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+
+      ################
+      # Setup TFLint #
+      ################
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v2
+        with:
+          tflint_version: v0.42.2
+
+      ###############
+      # Init TFLint #
+      ###############
+      - name: Init TFLint
+        run: tflint --init
+
+      ##############
+      # Run TFLint #
+      ##############
+      - name: Run TFLint
+        run: tflint -f compact
+
+  ###########
+  # TF docs #
+  ###########
+  tf-docs:
+    name: Docs
+    if: ${{ github.event_name == 'pull_request' }}
+    permissions:
+      contents: write
+      pull-requests: write
+
+    runs-on: ubuntu-latest
+    steps:
+      ############################
+      # Checkout the source code #
+      ############################
+      - name: Checkout Code
+        uses: actions/checkout@v3.1.0
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      ####################
+      # Update README.md #
+      ####################
+      - name: Terraform docs
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          config-file: .terraform-docs.yml
+          git-push: true

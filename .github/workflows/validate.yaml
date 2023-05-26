@@ -1,0 +1,46 @@
+---
+##################
+## Run validate ##
+##################
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+name: Validate
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+##########################
+# Prevent duplicate jobs #
+##########################
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+###############
+# Run the job #
+###############
+jobs:
+  ###############
+  # TF validate #
+  ###############
+  tf-validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      ############################
+      # Checkout the source code #
+      ############################
+      - name: Checkout Code
+        uses: actions/checkout@v3.1.0
+
+      ##########################
+      # Run Terraform validate #
+      ##########################
+      - name: Terraform validate
+        uses: dflook/terraform-validate@v1.29.1
