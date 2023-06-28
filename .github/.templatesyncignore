@@ -1,0 +1,9 @@
+README.md
+.github/workflows/*
+.terraform-docs.yml
+docs/20-badges.md
+docs/assets/logo.svg
+*.tf
+test/*
+go.mod
+go.sum

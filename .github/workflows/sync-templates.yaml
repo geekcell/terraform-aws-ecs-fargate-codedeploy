@@ -10,7 +10,9 @@
 
 name: Sync templates
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Trigger manually
+  schedule:
+    - cron:  "0 0 1 * *"  # Run at 00:00 on the first day of every month
 
 ##########################
 # Prevent duplicate jobs #
@@ -36,7 +38,7 @@ jobs:
       - name: Sync labels
         uses: EndBug/label-sync@v2.3.1
         with:
-          config-file: https://raw.githubusercontent.com/geekcell/template-terraform-module/main/.github/labels.yaml
+          config-file: https://gist.githubusercontent.com/Ic3w0lf/f5520c5f19d7098966f692c120f7a197/raw/75b134f76fbc55e2e64bd66f04e571d6d74b815e/terraform-aws-module-labels.yaml
 
   #######################
   # Sync template files #
@@ -50,33 +52,12 @@ jobs:
       ############################
       - name: Checkout Code
         uses: actions/checkout@v3.1.0
-        with:
-          token: ${{ secrets.GEEKCELL_PAT_WORKFLOWS }}
 
-      ########################
-      # Patch template files #
-      ########################
-      - name: Force patching of template files
-        run: |
-          yes y | make setup/update-template
-
-      ####################
-      # Update README.md #
-      ####################
-      - name: Terraform docs
-        uses: terraform-docs/gh-actions@v1.0.0
+      #######################
+      # Sync template files #
+      #######################
+      - name: actions-template-sync
+        uses: AndreasAugustin/actions-template-sync@v0.7.3
         with:
-          config-file: .terraform-docs.yml
-          git-push: false
-
-      #############
-      # Create PR #
-      #############
-      - name: Create PR
-        uses: peter-evans/create-pull-request@v4.2.0
-        with:
-          token: ${{ secrets.GEEKCELL_PAT_WORKFLOWS }}
-          title: Updated template files
-          commit-message: Update template files from main repo
-          branch: update-template-files
-          delete-branch: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_repo_path: geekcell/terraform-aws-module-template

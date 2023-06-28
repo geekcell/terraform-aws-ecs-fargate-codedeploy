@@ -1,42 +1,37 @@
 <!-- BEGIN_TF_DOCS -->
-[![Geek Cell GmbH](https://raw.githubusercontent.com/geekcell/template-terraform-module/main/docs/assets/logo.svg)](https://www.geekcell.io/)
-
-<!--
-Comment in these badges if they apply to the repository.
+[![Geek Cell GmbH](https://raw.githubusercontent.com/geekcell/.github/main/geekcell-github-banner.png)](https://www.geekcell.io/)
 
 ### Code Quality
-[![License](https://img.shields.io/github/license/geekcell/terraform-aws-security-group)](https://github.com/geekcell/terraform-aws-security-group/blob/master/LICENSE)
-[![GitHub release (latest tag)](https://img.shields.io/github/v/release/geekcell/terraform-aws-security-group?logo=github&sort=semver)](https://github.com/geekcell/terraform-aws-security-group/releases)
-[![Release](https://github.com/geekcell/terraform-aws-security-group/actions/workflows/release.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-security-group/actions/workflows/release.yaml)
-[![Validate](https://github.com/geekcell/terraform-aws-security-group/actions/workflows/validate.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-security-group/actions/workflows/validate.yaml)
-[![Lint](https://github.com/geekcell/terraform-aws-security-group/actions/workflows/linter.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-security-group/actions/workflows/linter.yaml)
+[![License](https://img.shields.io/github/license/geekcell/terraform-aws-ecs-fargate-codedeploy)](https://github.com/geekcell/terraform-aws-ecs-fargate-codedeploy/blob/master/LICENSE)
+[![GitHub release (latest tag)](https://img.shields.io/github/v/release/geekcell/terraform-aws-ecs-fargate-codedeploy?logo=github&sort=semver)](https://github.com/geekcell/terraform-aws-ecs-fargate-codedeploy/releases)
+[![Release](https://github.com/geekcell/terraform-aws-ecs-fargate-codedeploy/actions/workflows/release.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-ecs-fargate-codedeploy/actions/workflows/release.yaml)
+[![Validate](https://github.com/geekcell/terraform-aws-ecs-fargate-codedeploy/actions/workflows/validate.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-ecs-fargate-codedeploy/actions/workflows/validate.yaml)
+[![Lint](https://github.com/geekcell/terraform-aws-ecs-fargate-codedeploy/actions/workflows/linter.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-ecs-fargate-codedeploy/actions/workflows/linter.yaml)
 
 ### Security
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=INFRASTRUCTURE+SECURITY)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=INFRASTRUCTURE+SECURITY)
 
 #### Cloud
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+AWS+V1.2)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_aws_13)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+AWS+V1.3)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_azure)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+AZURE+V1.1)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_azure_13)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+AZURE+V1.3)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_gcp)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+GCP+V1.1)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+AWS+V1.2)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_aws_13)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+AWS+V1.3)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_azure)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+AZURE+V1.1)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_azure_13)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+AZURE+V1.3)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_gcp)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+GCP+V1.1)
 
 ##### Container
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_kubernetes_16)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+KUBERNETES+V1.6)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_eks_11)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+EKS+V1.1)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_gke_11)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+GKE+V1.1)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/cis_kubernetes)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=CIS+KUBERNETES+V1.5)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_kubernetes_16)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+KUBERNETES+V1.6)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_eks_11)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+EKS+V1.1)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_gke_11)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+GKE+V1.1)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/cis_kubernetes)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=CIS+KUBERNETES+V1.5)
 
 #### Data protection
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/soc2)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=SOC2)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=PCI-DSS+V3.2)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/pci_dss_v321)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=PCI-DSS+V3.2.1)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/iso)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=ISO27001)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=NIST-800-53)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=HIPAA)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-security-group/fedramp_moderate)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-security-group&benchmark=FEDRAMP+%28MODERATE%29)
-
--->
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/soc2)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=SOC2)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=PCI-DSS+V3.2)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/pci_dss_v321)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=PCI-DSS+V3.2.1)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/iso)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=ISO27001)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=NIST-800-53)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=HIPAA)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-ecs-fargate-codedeploy/fedramp_moderate)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-ecs-fargate-codedeploy&benchmark=FEDRAMP+%28MODERATE%29)
 
 # Terraform AWS ECS Fargate CodeDeploy
 
@@ -129,17 +124,17 @@ preconfigured solution for seamless scalability and high availability."
 
 | Name | Description |
 |------|-------------|
-| <a name="output_blue_target_group_arn"></a> [blue\_target\_group\_arn](#output\_blue\_target\_group\_arn) | # TARGET GROUPS |
-| <a name="output_cloudwatch_log_group_arn"></a> [cloudwatch\_log\_group\_arn](#output\_cloudwatch\_log\_group\_arn) | # CLOUDWATCH |
-| <a name="output_codedeploy_app_name"></a> [codedeploy\_app\_name](#output\_codedeploy\_app\_name) | # CODEDEPLOY |
-| <a name="output_codedeploy_deployment_group_name"></a> [codedeploy\_deployment\_group\_name](#output\_codedeploy\_deployment\_group\_name) | n/a |
-| <a name="output_green_target_group_arn"></a> [green\_target\_group\_arn](#output\_green\_target\_group\_arn) | n/a |
-| <a name="output_service_name"></a> [service\_name](#output\_service\_name) | # ECS |
-| <a name="output_task_definition_arn"></a> [task\_definition\_arn](#output\_task\_definition\_arn) | # TASK DEFINITION |
-| <a name="output_task_definition_execution_role_arn"></a> [task\_definition\_execution\_role\_arn](#output\_task\_definition\_execution\_role\_arn) | n/a |
-| <a name="output_task_definition_execution_role_name"></a> [task\_definition\_execution\_role\_name](#output\_task\_definition\_execution\_role\_name) | n/a |
-| <a name="output_task_definition_task_role_arn"></a> [task\_definition\_task\_role\_arn](#output\_task\_definition\_task\_role\_arn) | n/a |
-| <a name="output_task_definition_task_role_name"></a> [task\_definition\_task\_role\_name](#output\_task\_definition\_task\_role\_name) | n/a |
+| <a name="output_blue_target_group_arn"></a> [blue\_target\_group\_arn](#output\_blue\_target\_group\_arn) | ARN of the blue target group. |
+| <a name="output_cloudwatch_log_group_arn"></a> [cloudwatch\_log\_group\_arn](#output\_cloudwatch\_log\_group\_arn) | ARN of the CloudWatch log group. |
+| <a name="output_codedeploy_app_name"></a> [codedeploy\_app\_name](#output\_codedeploy\_app\_name) | CodeDeploy application name. |
+| <a name="output_codedeploy_deployment_group_name"></a> [codedeploy\_deployment\_group\_name](#output\_codedeploy\_deployment\_group\_name) | CodeDeploy deployment group name. |
+| <a name="output_green_target_group_arn"></a> [green\_target\_group\_arn](#output\_green\_target\_group\_arn) | ARN of the green target group. |
+| <a name="output_service_name"></a> [service\_name](#output\_service\_name) | ECS service name. |
+| <a name="output_task_definition_arn"></a> [task\_definition\_arn](#output\_task\_definition\_arn) | ARN of the task definition. |
+| <a name="output_task_definition_execution_role_arn"></a> [task\_definition\_execution\_role\_arn](#output\_task\_definition\_execution\_role\_arn) | ARN of the task execution role. |
+| <a name="output_task_definition_execution_role_name"></a> [task\_definition\_execution\_role\_name](#output\_task\_definition\_execution\_role\_name) | Name of the task execution role. |
+| <a name="output_task_definition_task_role_arn"></a> [task\_definition\_task\_role\_arn](#output\_task\_definition\_task\_role\_arn) | ARN of the task role. |
+| <a name="output_task_definition_task_role_name"></a> [task\_definition\_task\_role\_name](#output\_task\_definition\_task\_role\_name) | Name of the task role. |
 
 ## Providers
 
@@ -150,13 +145,27 @@ preconfigured solution for seamless scalability and high availability."
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (main.tf#303)
-- resource.aws_codedeploy_app.main (main.tf#225)
-- resource.aws_codedeploy_deployment_group.main (main.tf#232)
-- resource.aws_ecs_service.main (main.tf#54)
-- resource.aws_lb_listener.main (main.tf#172)
-- resource.aws_lb_listener.test_listener (main.tf#198)
-- resource.aws_lb_target_group.main (main.tf#131)
-- resource.random_id.target_group (main.tf#120)
+- resource.aws_cloudwatch_log_group.main (main.tf#304)
+- resource.aws_codedeploy_app.main (main.tf#226)
+- resource.aws_codedeploy_deployment_group.main (main.tf#233)
+- resource.aws_ecs_service.main (main.tf#55)
+- resource.aws_lb_listener.main (main.tf#173)
+- resource.aws_lb_listener.test_listener (main.tf#199)
+- resource.aws_lb_target_group.main (main.tf#132)
+- resource.random_id.target_group (main.tf#121)
 - data source.aws_subnet.main (data.tf#1)
+
+# Examples
+### Basic
+```hcl
+module "basic-example" {
+  source = "../../"
+
+  name                       = "basic-example"
+  ecs_cluster_name           = "example-cluster"
+  lb_arn                     = "lb.aws.amazon.com"
+  subnet_ids                 = ["subnet-123", "subnet-456", "subnet-789"]
+  task_container_definitions = "nginx"
+}
+```
 <!-- END_TF_DOCS -->

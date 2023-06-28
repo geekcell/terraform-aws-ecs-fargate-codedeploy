@@ -5,10 +5,6 @@
 
 ...
 
-## How this PR fixes it
-
-...
-
 ## Readiness Checklist
 
 ### Author/Contributor
