@@ -24,7 +24,8 @@ locals {
 # Task Definition
 #
 module "task_definition" {
-  source = "github.com/geekcell/terraform-aws-ecs-task-definition.git?ref=main"
+  source  = "geekcell/ecs-task-definition/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name = coalesce(var.task_definition_name, var.name)
 
@@ -310,7 +311,8 @@ resource "aws_cloudwatch_log_group" "main" {
 # IAM Roles
 #
 module "iam_role_codedeploy" {
-  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1"
+  source  = "geekcell/iam-role/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name            = coalesce(var.codedeploy_role_name, "${var.name}-codedeploy")
   use_name_prefix = var.codedeploy_role_name_prefix
