@@ -145,12 +145,12 @@ preconfigured solution for seamless scalability and high availability."
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (main.tf#304)
-- resource.aws_codedeploy_app.main (main.tf#226)
-- resource.aws_codedeploy_deployment_group.main (main.tf#233)
+- resource.aws_cloudwatch_log_group.main (main.tf#306)
+- resource.aws_codedeploy_app.main (main.tf#228)
+- resource.aws_codedeploy_deployment_group.main (main.tf#235)
 - resource.aws_ecs_service.main (main.tf#55)
-- resource.aws_lb_listener.main (main.tf#173)
-- resource.aws_lb_listener.test_listener (main.tf#199)
+- resource.aws_lb_listener.main (main.tf#175)
+- resource.aws_lb_listener.test_listener (main.tf#201)
 - resource.aws_lb_target_group.main (main.tf#132)
 - resource.random_id.target_group (main.tf#121)
 - data source.aws_subnet.main (data.tf#1)
