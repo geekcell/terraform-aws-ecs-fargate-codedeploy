@@ -53,6 +53,7 @@ preconfigured solution for seamless scalability and high availability."
 |------|-------------|------|---------|:--------:|
 | <a name="input_assign_public_ip"></a> [assign\_public\_ip](#input\_assign\_public\_ip) | Assign a public IP address to the ENI. | `bool` | `false` | no |
 | <a name="input_cloudwatch_log_group_name"></a> [cloudwatch\_log\_group\_name](#input\_cloudwatch\_log\_group\_name) | The name of the CloudWatch log group. | `string` | `null` | no |
+| <a name="input_cloudwatch_log_group_retention_in_days"></a> [cloudwatch\_log\_group\_retention\_in\_days](#input\_cloudwatch\_log\_group\_retention\_in\_days) | The number of days log events are kept in CloudWatch log group. | `number` | `30` | no |
 | <a name="input_codedeploy_auto_rollback_events"></a> [codedeploy\_auto\_rollback\_events](#input\_codedeploy\_auto\_rollback\_events) | The event type or types that trigger a rollback. If none are defined `auto_rollback` will be disabled. | `list(string)` | <pre>[<br>  "DEPLOYMENT_FAILURE",<br>  "DEPLOYMENT_STOP_ON_ALARM"<br>]</pre> | no |
 | <a name="input_codedeploy_cloudwatch_alarm_names"></a> [codedeploy\_cloudwatch\_alarm\_names](#input\_codedeploy\_cloudwatch\_alarm\_names) | Cloudwatch alarm NAMES (not ARNs) to add to the deployment group. Allows automated rollback on errors. | `list(string)` | `[]` | no |
 | <a name="input_codedeploy_deployment_config_name"></a> [codedeploy\_deployment\_config\_name](#input\_codedeploy\_deployment\_config\_name) | The name of the group's deployment config. | `string` | `"CodeDeployDefault.ECSAllAtOnce"` | no |
@@ -145,14 +146,14 @@ preconfigured solution for seamless scalability and high availability."
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (main.tf#306)
-- resource.aws_codedeploy_app.main (main.tf#228)
-- resource.aws_codedeploy_deployment_group.main (main.tf#235)
-- resource.aws_ecs_service.main (main.tf#55)
-- resource.aws_lb_listener.main (main.tf#175)
-- resource.aws_lb_listener.test_listener (main.tf#201)
-- resource.aws_lb_target_group.main (main.tf#132)
-- resource.random_id.target_group (main.tf#121)
+- resource.aws_cloudwatch_log_group.main (main.tf#309)
+- resource.aws_codedeploy_app.main (main.tf#231)
+- resource.aws_codedeploy_deployment_group.main (main.tf#238)
+- resource.aws_ecs_service.main (main.tf#56)
+- resource.aws_lb_listener.main (main.tf#176)
+- resource.aws_lb_listener.test_listener (main.tf#202)
+- resource.aws_lb_target_group.main (main.tf#133)
+- resource.random_id.target_group (main.tf#122)
 - data source.aws_subnet.main (data.tf#1)
 
 # Examples

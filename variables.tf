@@ -285,7 +285,6 @@ variable "codedeploy_cloudwatch_alarm_names" {
   type        = list(string)
 }
 
-
 # TARGET GROUP
 variable "target_group_load_balancing_algorithm_type" {
   description = "Determines how the load balancer selects targets when routing requests."
@@ -507,4 +506,10 @@ variable "cloudwatch_log_group_name" {
   description = "The name of the CloudWatch log group."
   default     = null
   type        = string
+}
+
+variable "cloudwatch_log_group_retention_in_days" {
+  description = "The number of days log events are kept in CloudWatch log group."
+  default     = 30
+  type        = number
 }

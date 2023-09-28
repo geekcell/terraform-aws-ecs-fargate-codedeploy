@@ -46,7 +46,8 @@ module "task_definition" {
   proxy_configuration              = var.task_proxy_configuration
   additional_execute_role_policies = var.task_additional_execute_role_policies
   additional_task_role_policies    = var.task_additional_task_role_policies
-  tags                             = var.tags
+
+  tags = var.tags
 }
 
 #
@@ -100,11 +101,6 @@ resource "aws_ecs_service" "main" {
     }
   }
 
-  # Tags
-  enable_ecs_managed_tags = var.enable_ecs_managed_tags
-  propagate_tags          = var.propagate_tags
-  tags                    = var.tags
-
   lifecycle {
     # These values will be updated by CodeDeploy after the initial setup and
     # can not be touched directly by TF again
@@ -112,6 +108,11 @@ resource "aws_ecs_service" "main" {
   }
 
   depends_on = [module.task_definition, aws_lb_target_group.main]
+
+  # Tags
+  enable_ecs_managed_tags = var.enable_ecs_managed_tags
+  propagate_tags          = var.propagate_tags
+  tags                    = var.tags
 }
 
 #
@@ -193,9 +194,9 @@ resource "aws_lb_listener" "main" {
     ignore_changes = [default_action]
   }
 
-  tags = var.tags
-
   depends_on = [aws_lb_target_group.main]
+
+  tags = var.tags
 }
 
 resource "aws_lb_listener" "test_listener" {
@@ -220,6 +221,8 @@ resource "aws_lb_listener" "test_listener" {
   }
 
   depends_on = [aws_lb_target_group.main]
+
+  tags = var.tags
 }
 
 #
@@ -306,7 +309,10 @@ resource "aws_codedeploy_deployment_group" "main" {
 resource "aws_cloudwatch_log_group" "main" {
   count = var.create_cloudwatch_log_group ? 1 : 0
 
-  name = coalesce(var.cloudwatch_log_group_name, "/aws/ecs/${var.ecs_cluster_name}/${var.name}")
+  name              = coalesce(var.cloudwatch_log_group_name, "/aws/ecs/${var.ecs_cluster_name}/${var.name}")
+  retention_in_days = var.cloudwatch_log_group_retention_in_days
+
+  tags = var.tags
 }
 
 #
@@ -321,4 +327,6 @@ module "iam_role_codedeploy" {
 
   assume_roles = { "Service" : { identifiers = ["codedeploy.amazonaws.com"] } }
   policy_arns  = ["arn:aws:iam::aws:policy/AWSCodeDeployRoleForECS"]
+
+  tags = var.tags
 }
