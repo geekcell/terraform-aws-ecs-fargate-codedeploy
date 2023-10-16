@@ -125,6 +125,8 @@ preconfigured solution for seamless scalability and high availability."
 
 | Name | Description |
 |------|-------------|
+| <a name="output_aws_lb_listener_arn"></a> [aws\_lb\_listener\_arn](#output\_aws\_lb\_listener\_arn) | ARN of the ALB main listener. |
+| <a name="output_aws_lb_test_listener_arn"></a> [aws\_lb\_test\_listener\_arn](#output\_aws\_lb\_test\_listener\_arn) | ARN of the ALB test listener. |
 | <a name="output_blue_target_group_arn"></a> [blue\_target\_group\_arn](#output\_blue\_target\_group\_arn) | ARN of the blue target group. |
 | <a name="output_cloudwatch_log_group_arn"></a> [cloudwatch\_log\_group\_arn](#output\_cloudwatch\_log\_group\_arn) | ARN of the CloudWatch log group. |
 | <a name="output_codedeploy_app_name"></a> [codedeploy\_app\_name](#output\_codedeploy\_app\_name) | CodeDeploy application name. |
