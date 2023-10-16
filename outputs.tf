@@ -26,6 +26,17 @@ output "green_target_group_arn" {
   value       = aws_lb_target_group.main["green"].arn
 }
 
+## LOAD BALANCER LISTENER
+output "aws_lb_listener_arn" {
+  description = "ARN of the ALB main listener."
+  value       = try(aws_lb_listener.main[0].arn, null)
+}
+
+output "aws_lb_test_listener_arn" {
+  description = "ARN of the ALB test listener."
+  value       = try(aws_lb_listener.test_listener[0].arn, null)
+}
+
 ## TASK DEFINITION
 output "task_definition_arn" {
   description = "ARN of the task definition."
