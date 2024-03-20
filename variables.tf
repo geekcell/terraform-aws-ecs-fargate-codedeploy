@@ -278,6 +278,12 @@ variable "codedeploy_role_name_prefix" {
   type        = bool
 }
 
+variable "codedeploy_ignore_poll_alarm_failure" {
+  description = "Whether to ignore failures when polling for alarms."
+  default     = false
+  type        = bool
+}
+
 # CLOUDWATCH
 variable "codedeploy_cloudwatch_alarm_names" {
   description = "Cloudwatch alarm NAMES (not ARNs) to add to the deployment group. Allows automated rollback on errors."
