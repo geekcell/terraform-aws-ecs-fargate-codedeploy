@@ -58,6 +58,7 @@ preconfigured solution for seamless scalability and high availability."
 | <a name="input_codedeploy_cloudwatch_alarm_names"></a> [codedeploy\_cloudwatch\_alarm\_names](#input\_codedeploy\_cloudwatch\_alarm\_names) | Cloudwatch alarm NAMES (not ARNs) to add to the deployment group. Allows automated rollback on errors. | `list(string)` | `[]` | no |
 | <a name="input_codedeploy_deployment_config_name"></a> [codedeploy\_deployment\_config\_name](#input\_codedeploy\_deployment\_config\_name) | The name of the group's deployment config. | `string` | `"CodeDeployDefault.ECSAllAtOnce"` | no |
 | <a name="input_codedeploy_deployment_ready_wait_time_in_minutes"></a> [codedeploy\_deployment\_ready\_wait\_time\_in\_minutes](#input\_codedeploy\_deployment\_ready\_wait\_time\_in\_minutes) | The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. If set to 0 the deployment will continue without waiting for approval. | `number` | `0` | no |
+| <a name="input_codedeploy_ignore_poll_alarm_failure"></a> [codedeploy\_ignore\_poll\_alarm\_failure](#input\_codedeploy\_ignore\_poll\_alarm\_failure) | Whether to ignore failures when polling for alarms. | `bool` | `false` | no |
 | <a name="input_codedeploy_role_name"></a> [codedeploy\_role\_name](#input\_codedeploy\_role\_name) | The name of the role that allows CodeDeploy to make calls to ECS, Auto Scaling, and CloudWatch on your behalf. | `string` | `null` | no |
 | <a name="input_codedeploy_role_name_prefix"></a> [codedeploy\_role\_name\_prefix](#input\_codedeploy\_role\_name\_prefix) | Whether to prefix the CodeDeploy role name. | `bool` | `false` | no |
 | <a name="input_codedeploy_termination_action"></a> [codedeploy\_termination\_action](#input\_codedeploy\_termination\_action) | The action to take on instances in the original environment after a successful blue/green deployment. | `string` | `"TERMINATE"` | no |
@@ -148,7 +149,7 @@ preconfigured solution for seamless scalability and high availability."
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (main.tf#309)
+- resource.aws_cloudwatch_log_group.main (main.tf#310)
 - resource.aws_codedeploy_app.main (main.tf#231)
 - resource.aws_codedeploy_deployment_group.main (main.tf#238)
 - resource.aws_ecs_service.main (main.tf#56)
