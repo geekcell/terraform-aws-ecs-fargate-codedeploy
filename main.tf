@@ -268,10 +268,13 @@ resource "aws_codedeploy_deployment_group" "main" {
     events  = var.codedeploy_auto_rollback_events
   }
 
-  alarm_configuration {
-    enabled                   = length(var.codedeploy_cloudwatch_alarm_names) > 0 ? true : false
-    alarms                    = var.codedeploy_cloudwatch_alarm_names
-    ignore_poll_alarm_failure = var.codedeploy_ignore_poll_alarm_failure
+  dynamic "alarm_configuration" {
+    for_each = length(var.codedeploy_cloudwatch_alarm_names) > 0 ? [true] : []
+
+    content {
+      alarms                    = var.codedeploy_cloudwatch_alarm_names
+      ignore_poll_alarm_failure = var.codedeploy_ignore_poll_alarm_failure
+    }
   }
 
   load_balancer_info {
