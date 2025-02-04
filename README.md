@@ -149,7 +149,7 @@ preconfigured solution for seamless scalability and high availability."
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (main.tf#310)
+- resource.aws_cloudwatch_log_group.main (main.tf#313)
 - resource.aws_codedeploy_app.main (main.tf#231)
 - resource.aws_codedeploy_deployment_group.main (main.tf#238)
 - resource.aws_ecs_service.main (main.tf#56)
